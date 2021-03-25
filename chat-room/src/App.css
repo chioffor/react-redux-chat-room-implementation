@@ -1,0 +1,20 @@
+.rooms-list {
+  height: 400px;
+}
+
+.chat-messages {
+  height: 400px;
+  overflow: auto;
+}
+
+.chat-input {
+  width: 80%;
+}
+
+.chat-input-button {
+  width: 20%;
+}
+
+.form-control:focus{
+  box-shadow: none;
+}
