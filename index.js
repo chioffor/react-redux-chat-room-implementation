@@ -26,10 +26,28 @@ io.on('connection', (socket) => {
             roomId: msg.roomId,
             text: msg.text,
             username: msg.username,
+            usernameColor: msg.usernameColor,
             socketId: socket.id
         };
         io.emit('chat message', data)      
-    });  
+    }); 
+    
+    socket.on('new room created', (msg) => {
+        const data = {
+            roomId: msg.roomId,
+            roomName: msg.roomName,
+            username: msg.username
+        };
+        io.emit('new room created', data)
+    })
+
+    socket.on('user joined a room', (msg) => {
+        const data = {
+            roomId: msg.roomId,
+            username: msg.username
+        };
+        io.emit('user joined a room', data)
+    })
 });
 
 http.listen(PORT, () => {

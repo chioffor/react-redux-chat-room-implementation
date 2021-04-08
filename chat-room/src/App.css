@@ -18,3 +18,21 @@
 .form-control:focus{
   box-shadow: none;
 }
+
+.room-name {
+  font-family: 'Playfair Display', serif;
+}
+
+.welcome {
+  font-family: 'Nunito', sans-serif;
+}
+
+.last-message {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 800px) {
+  .app-container {
+    height: 100px;
+  }
+}

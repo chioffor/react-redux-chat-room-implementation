@@ -1,10 +1,18 @@
 import React from 'react'
 
 export function RoomHeader({ username }) {
+    const titleCase = (username) => {
+        
+        return username[0].toUpperCase() + username.slice(1)
+    }
+
     return (
-        <div className="fw-bold">
-            <div>Welcome {username} </div>
-            <div>Please enter a Room</div>            
+        <div className="">
+            <div>
+                <span className="welcome me-2">Welcome</span> 
+                <span className="fw-bold">{titleCase(username)}</span>
+            </div>
+            <hr />
         </div>
     )
 }
