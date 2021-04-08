@@ -8,16 +8,18 @@ export function ChatMessages({ roomId, username, usernameColor }) {
     const room = rooms.find(room => room.id === roomId)
     const roomChatMessages = room.messages    
         
-    const renderedMessages = roomChatMessages.map(message => {        
-        if (message.username) {
-            return (
+    const renderedMessages = roomChatMessages.map(message => {
+        let chatMessageDisplay; 
+        const messageUsername = message.username       
+        if (messageUsername) {
+            chatMessageDisplay = (
                 <div className="p-1 w-75 text-wrap text-break" key={message.id}>
-                    {username === message.username.name ? 
+                    {username === messageUsername.name ? 
                         <div className="fw-bold me-2">
-                            {message.username.name}
+                            {messageUsername.name}
                         </div> :
-                        <div className={message.username.color + " fw-bold me-2"}>
-                            {message.username.name}
+                        <div className={messageUsername.color + " fw-bold me-2"}>
+                            {messageUsername.name}
                         </div>
                     }
 
@@ -25,11 +27,14 @@ export function ChatMessages({ roomId, username, usernameColor }) {
                 </div>
             )
         } else {
-            return (
-                <div className="text-muted fs-6 fw-bold fst-italic text-center" key={message.id}>{message.text}</div>
-            )                
-        }   
+            if (message.info.username !== username) {
+                chatMessageDisplay = (
+                    <div className="text-muted fs-6 fw-bold fst-italic text-center" key={message.id}>{message.text}</div>
+                )   
+            }             
+        }  
         
+        return chatMessageDisplay
     })
 
     return (
